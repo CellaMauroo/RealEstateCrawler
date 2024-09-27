@@ -15,6 +15,7 @@ body {
 
 header {
     background: linear-gradient(135deg, #1e3a5f, #3b5998, #6272a4);
+    width: 100%;
     color: white;
     padding: 10px;
     display: flex;
@@ -63,10 +64,17 @@ header h1 {
     background-color: #b0334a;
 }
 
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .image {
     border-radius: 5px;
     width: 340px;
     height: 180px;
+    display: flex;
 }
 
 .not-found {
@@ -93,11 +101,10 @@ header h1 {
 
 .button-header {
     color: white;
-    padding: 10px 15px;
+    padding-right: 10px;
     border-radius: 5px;
     text-decoration: none;
     margin-left: 10px;
-    transition: background-color 0.3s ease;
 }
 
 .box {
@@ -113,11 +120,6 @@ header h1 {
 .button:hover {
     background-color: #123057;
 }
-
-.button-header:hover {
-    background-color: rgba(177, 189, 239, 0.222);
-}
-
 
 
 .profile {
@@ -136,7 +138,7 @@ header h1 {
     background-color: #555;
 }
 
-main {
+.main {
     flex: 1;
     display: flex;
     justify-content: flex-start;
@@ -149,6 +151,22 @@ main {
     margin: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+.main-detalhes {
+    flex: 1;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-wrap: wrap;
+    padding: 20px 10px;
+    flex-direction: row;
+    text-align: center;
+    background-color: white;
+    border-radius: 8px;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 
 .title {
     font-size: 32px;
@@ -166,18 +184,16 @@ main {
     margin-bottom: 10px;
 }
 
+fieldset {
+    border: none;
+}
 
-.lbl {
+.form-option {
     display: flex;
     flex-direction: column;
     font-size: 14px;
     color: #666;
     min-width: 45%;
-}
-
-.lbl label {
-    margin-bottom: 5px;
-
 }
 
 input {
@@ -269,16 +285,19 @@ footer span {
     justify-content: center;
 }
 
+
 .propriedade {
     margin: 10px;
     margin-top: 25px;
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 8px;
-    padding: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    min-width: 350px;
-    max-width: 350px;
+    width: 340px;
+}
+
+a {
+    text-decoration: none;
 }
 
 .propriedade h1 {
@@ -298,11 +317,76 @@ footer span {
     margin-top: 15px;
 }
 
-/* .propriedade:hover {
+.propriedade:hover {
     transform: scale(1.04);
     transition: .2s;
-} */
+}
 
+.titulo-imovel {
+    display: flex;
+    align-items: center;
+}
+
+.detalhes-btn {
+    display: flex;
+    background-color: #1e3a5f;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 5px;
+    height: 30px
+}
+
+.container-detalhes {
+    padding: 30px;
+}
+
+.infos-detalhes {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    flex-wrap: wrap;
+    width: 500px
+}
+
+.carrossel {
+    display: flex;
+    justify-content: cen;
+    border-radius: 5px;
+}
+
+.carrossel img {
+    display: flex;
+    width: 600px;
+    height: 350px;
+    border-radius: 5px;
+}
+
+.carrossel-btn {
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    color: #1f549a;
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+.next-btn {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.prev-btn {
+    display: flex;
+    justify-content: flex-start;
+}
 
 @media (max-width: 768px) {
     .form {

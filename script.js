@@ -46,17 +46,25 @@ function mostrarPropriedades(propriedadesParaMostrar) {
         elementoPropriedade.className = 'propriedade';
         if (propriedade.finalidade === "Aluguel") {
             elementoPropriedade.innerHTML = `
-                <img class="image" src=${propriedade.img} />
-                <h1>${propriedade.tipo} - ${propriedade.finalidade}</h1>
-                <p>${propriedade.cidade} - ${propriedade.bairro}</p>
-                <h2>R$ ${propriedade.preço.toFixed(2)}/mês </h2>
+            <section>
+                <a href="detalhes.html">
+                    <img class="image" src=${propriedade.img} alt="Property Image" />
+                    <h1>${propriedade.tipo} - ${propriedade.finalidade}</h1>
+                    <p>${propriedade.cidade} - ${propriedade.bairro}</p>
+                    <h2>R$ ${propriedade.preço.toFixed(2)}/mês </h2>
+                </a>
+            </section>
             `;
         } else {
             elementoPropriedade.innerHTML = `
-            <img class="image" src=${propriedade.img} />
-            <h1>${propriedade.tipo} - ${propriedade.finalidade}</h1>
-            <p>${propriedade.cidade} - ${propriedade.bairro}</p>
-            <h2>R$ ${propriedade.preço.toFixed(2)}</h2>
+            <section>
+                <a href="detalhes.html">
+                    <img class="image" src=${propriedade.img} />
+                    <h1>${propriedade.tipo} - ${propriedade.finalidade}</h1>
+                    <p>${propriedade.cidade} - ${propriedade.bairro}</p>
+                    <h2>R$ ${propriedade.preço.toFixed(2)}</h2>
+                </a>
+            </section>
         `;
         }
         container.appendChild(elementoPropriedade);
@@ -95,9 +103,14 @@ function limpar() {
     mostrarPropriedades(propriedades);
 }
 
+
 document.getElementById('buscar-btn').addEventListener('click', filtrar);
 document.getElementById('limpar-btn').addEventListener('click', limpar);
 
+
+
+
 mostrarPropriedades(propriedades);
+
 
 

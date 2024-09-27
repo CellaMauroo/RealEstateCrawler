@@ -4,27 +4,25 @@
 <head>
     <script src="https://kit.fontawesome.com/1a2ae7c538.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Imobiliária</title>
+    <title>Imóveis para Venda e Locação</title>
 </head>
 
 <body>
-
     <header>
         <h1>Imobiliaria XYZ</h1>
-        <div class="header-container">
+        <nav class="header-container">
             <a class="button-header" href="contato.html">Contato</a>
             <a class="profile" href="perfil.html">
                 <i class="fa-solid fa-user"></i>
             </a>
-        </div>
+        </nav>
     </header>
-
-    <main>
+    <main class="main">
         <h1 class="title" id="mensagem">Encontre seu imóvel!</h1>
-        <div class="form">
-            <div class="lbl">
+        <form class="form">
+            <fieldset class="form-option">
                 <label for="tipo">Tipo do imóvel</label>
                 <select id="tipo">
                     <option value="all">Todos</option>
@@ -32,18 +30,17 @@
                     <option>Apartamento</option>
                     <option>Chácara</option>
                     <option>Terreno</option>
-                    <a href="detalhes.html?id=123"> botao teste</a>
                 </select>
-            </div>
-            <div class="lbl">
+            </fieldset>
+            <fieldset class="form-option">
                 <label for="finalidade">Finalidade</label>
                 <select id="finalidade">
                     <option value="all">Todos</option>
                     <option>Aluguel</option>
                     <option>Venda</option>
                 </select>
-            </div>
-            <div class="lbl">
+            </fieldset>
+            <fieldset class="form-option">
                 <label for="cidade">Cidade</label>
                 <select id="cidade">
                     <option value="all">Todos</option>
@@ -51,8 +48,8 @@
                     <option>Dois Vizinhos</option>
                     <option>Pato Branco</option>
                 </select>
-            </div>
-            <div class="lbl">
+            </fieldset>
+            <fieldset class="form-option">
                 <label for="bairro">Bairro</label>
                 <select id="bairro">
                     <option value="all">Todos</option>
@@ -61,29 +58,27 @@
                     <option>Bairro São Cristovão</option>
                     <option>Bairro Cristo Rei</option>
                 </select>
-            </div>
-        </div>
-        <div class="price">
-            <div class="price-btn">
+            </fieldset>
+        </form>
+        <form class="price">
+            <fieldset class="price-btn">
                 <label>Min</label>
-                <input id="min" type="number" name="number" />
-            </div>
-            <div class="line">
-                -
-            </div>
-            <div class="price-btn">
+                <input id="min" type="number" min="0" />
+            </fieldset>
+            <div class="line"> - </div>
+            <fieldset class="price-btn">
                 <label>Max</label>
-                <input id="max" type="number" name="number" />
-            </div>
-        </div>
+                <input id="max" type="number" min="0" />
+            </fieldset>
+        </form>
         <div>
             <button class="buscar-btn" id="buscar-btn">Buscar</button>
             <button class="limpar-btn" id="limpar-btn">Limpar</button>
         </div>
 
-        <div class="propriedade-container" id="containerPropriedades"></div>
+        <div class="propriedade-container" id="containerPropriedades">
+        </div>
     </main>
-
     <footer>
         <span>Imobiliaria XYZ</span>
         <div>
