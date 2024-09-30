@@ -49,9 +49,9 @@ function mostrarPropriedades(propriedadesParaMostrar) {
             <section>
                 <a href="detalhes.html">
                     <img class="image" src=${propriedade.img} alt="Property Image" />
-                    <h1>${propriedade.tipo} - ${propriedade.finalidade}</h1>
-                    <p>${propriedade.cidade} - ${propriedade.bairro}</p>
-                    <h2>R$ ${propriedade.preço.toFixed(2)}/mês </h2>
+                    <h1 class="poppins-semibold">${propriedade.tipo} - ${propriedade.finalidade}</h1>
+                    <p class="poppins-regular">${propriedade.cidade} - ${propriedade.bairro}</p>
+                    <h2 class="poppins-semibold">R$ ${propriedade.preço.toFixed(2)}/mês </h2>
                 </a>
             </section>
             `;
@@ -60,9 +60,9 @@ function mostrarPropriedades(propriedadesParaMostrar) {
             <section>
                 <a href="detalhes.html">
                     <img class="image" src=${propriedade.img} />
-                    <h1>${propriedade.tipo} - ${propriedade.finalidade}</h1>
-                    <p>${propriedade.cidade} - ${propriedade.bairro}</p>
-                    <h2>R$ ${propriedade.preço.toFixed(2)}</h2>
+                    <h1 class="poppins-semibold">${propriedade.tipo} - ${propriedade.finalidade}</h1>
+                    <p class="poppins-regular">${propriedade.cidade} - ${propriedade.bairro}</p>
+                    <h2 class="poppins-semibold">R$ ${propriedade.preço.toFixed(2)}</h2>
                 </a>
             </section>
         `;
