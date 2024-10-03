@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <script src="https://kit.fontawesome.com/1a2ae7c538.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <title>Imóveis para Venda e Locação</title>
+</head>
+
+<body>
+    <header>
+        <a style="color: white;" class="h1" href="index.html">Imobiliaria XYZ</a>
+        <nav class="header-container">
+            <a class="button-header" href="index.html">Comprar</a>
+            <a class="button-header" href="index.html">Alugar</a>
+            <a class="button-header" href="contato.html">Fale Conosco</a>
+            <a class="button-header" href="index.html">Crie um Alerta</a>
+            <a class="button-header" href="index.html">Favoritos</a>
+            <a class="profile" href="perfil.html">
+                <i class="fa-solid fa-user"></i>
+            </a>
+        </nav>
+    </header>
+
+    <main class="main-detalhes">
+        <div id="property-details">
+            <h1 id="property-title" style="font-size: 40px;"></h1>
+            <div class="carrossel">
+                <div class="image-container" id="image-prop">
+                    <button onclick="prevImg()" class="carrossel-btn prev-btn fas fa-angle-left" id="prev-btn"></button>
+                    <img src="" alt="Imagem imovel" id="image">
+                    <button onclick="nextImg()" class="carrossel-btn next-btn fas fa-angle-right"
+                        id="next-btn"></button>
+                    <div id="myModal" class="modal">
+
+                        <span class="close">&times;</span>
+                        <img class="modal-content" id="img01">
+                        <div>
+                            <button onclick="modalPrev()"
+                                style="color: #1f549a; background-color: transparent; font-size: 30px;"
+                                class=" fas fa-angle-left" id="modalPrev"></button>
+                            <button onclick="modalNext()"
+                                style="color: #1f549a; background-color: transparent; font-size: 30px;"
+                                class=" fas fa-angle-right" id="modalNext"></button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-detalhes">
+            <a class="detalhes-btn" href="contato.html">Entre em contato</a>
+            <div class=" infos-detalhes">
+                <h2 id="property-preco"></h2>
+                <h2 id="tamanho"></h2>
+            </div>
+        </div>
+        <div class="espec">
+            <h1>Endereço</h1>
+            <div class="linha-espec"></div>
+            <p id="property-endereco" class="texto-espec">
+            </p>
+
+            <h1>Detalhes do Imóvel</h1>
+            <div class="linha-espec"></div>
+            <p class="texto-espec">
+                Lorem ipsum dolor sit amet. Et nobis nulla aut pariatur minima et aspernatur fuga sit illo
+                modi et culpa similique et vitae ipsum. Qui error saepe et neque eius ab rerum nesciunt quo
+                repellat error et laborum dolore ut ipsam galisum. Ad soluta velit 33 laudantium voluptatem
+                est voluptas dicta et officia sequi.Lorem ipsum dolor sit amet. Et nobis nulla aut pariatur minima et
+                aspernatur fuga sit illo
+
+            </p>
+
+            <div class="opcionais-espec">
+                <h1>Informações adicionais</h1>
+                <div class="linha-espec"></div>
+                <div id="infos-detalhes" class="opcionais-items">
+                </div>
+            </div>
+    </main>
+
+    <footer>
+        <span>Imobiliaria XYZ</span>
+        <div>
+            <i class="fa-solid fa-phone"></i>
+            <span>46 99984-2342</span>
+        </div>
+        <div>
+            <i class="fa-solid fa-phone"></i>
+            <span>46 99984-2342</span>
+        </div>
+    </footer>
+    <script src="detalhes.js"></script>
+</body>
+
+</html>
