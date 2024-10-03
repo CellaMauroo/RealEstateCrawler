@@ -16,10 +16,13 @@
 
 <body>
     <header>
-        <h1>Imobiliaria XYZ</h1>
+        <a style="color: white;" class="h1" href="index.html">Imobiliaria XYZ</a>
         <nav class="header-container">
-            <a class="button-header" href="index.html">Início</a>
-            <a class="button-header" href="contato.html">Contato</a>
+            <a class="button-header" href="index.html">Comprar</a>
+            <a class="button-header" href="index.html">Alugar</a>
+            <a class="button-header" href="contato.html">Fale Conosco</a>
+            <a class="button-header" href="index.html">Crie um Alerta</a>
+            <a class="button-header" href="index.html">Favoritos</a>
             <a class="profile" href="perfil.html">
                 <i class="fa-solid fa-user"></i>
             </a>
@@ -27,32 +30,42 @@
     </header>
 
     <main class="main-detalhes">
-        <div>
-            <h1 style="font-size: 60px;">Casa para venda</h1>
+        <div id="property-details">
+            <h1 id="property-title" style="font-size: 40px;"></h1>
             <div class="carrossel">
                 <div class="image-container" id="image-prop">
-                    <button class="carrossel-btn prev-btn fas fa-angle-left" id="prev-btn"></button>
-                    <img src="images/casa6.jpg" alt="">
-                    <button class="carrossel-btn next-btn fas fa-angle-right" id="next-btn"></button>
+                    <button onclick="prevImg()" class="carrossel-btn prev-btn fas fa-angle-left" id="prev-btn"></button>
+                    <img src="" alt="Imagem imovel" id="image">
+                    <button onclick="nextImg()" class="carrossel-btn next-btn fas fa-angle-right"
+                        id="next-btn"></button>
+                    <div id="myModal" class="modal">
+
+                        <span class="close">&times;</span>
+                        <img class="modal-content" id="img01">
+                        <div>
+                            <button onclick="modalPrev()"
+                                style="color: #1f549a; background-color: transparent; font-size: 30px;"
+                                class=" fas fa-angle-left" id="modalPrev"></button>
+                            <button onclick="modalNext()"
+                                style="color: #1f549a; background-color: transparent; font-size: 30px;"
+                                class=" fas fa-angle-right" id="modalNext"></button>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class=" container-detalhes">
+        <div class="container-detalhes">
             <a class="detalhes-btn" href="contato.html">Entre em contato</a>
             <div class=" infos-detalhes">
-                <h2>R$680000,00</h2>
-                <h2>● Área: 170m2</h2>
-                <h2>● 2 Vagas Garagem</h2>
-                <h2>● 2 Quartos</h2>
-                <h2>● 2 Banheiros</h2>
-                <h2>● 1 Sala</h2>
+                <h2 id="property-preco"></h2>
+                <h2 id="tamanho"></h2>
             </div>
         </div>
         <div class="espec">
             <h1>Endereço</h1>
             <div class="linha-espec"></div>
-            <p class="texto-espec">
-                Rua Santo Antônio 954, Centro, São João - PR, 85570-000
+            <p id="property-endereco" class="texto-espec">
             </p>
 
             <h1>Detalhes do Imóvel</h1>
@@ -67,17 +80,9 @@
             </p>
 
             <div class="opcionais-espec">
-                <h1>Cômodos</h1>
+                <h1>Informações adicionais</h1>
                 <div class="linha-espec"></div>
-                <div class="opcionais-items">
-                    <label class="background-box">Banheiros: X</label>
-                    <label class="background-box">Salas: X</label>
-                    <label class="background-box">Quartos: X</label>
-                    <label class="background-box">Cozinhas: X</label>
-                    <label class="background-box">Suítes: X</label>
-                    <label class="background-box">Vagas Garagem: X</label>
-                    <label class="background-box">Info1: X</label>
-                    <label class="background-box">Info2: X</label>
+                <div id="infos-detalhes" class="opcionais-items">
                 </div>
             </div>
     </main>
@@ -93,7 +98,7 @@
             <span>46 99984-2342</span>
         </div>
     </footer>
-    <script src="script.js"></script>
+    <script src="detalhes.js"></script>
 </body>
 
 </html>

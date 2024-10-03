@@ -19,100 +19,115 @@ const propriedades = [
 
 
 
-
-const tipos = [...new Set(propriedades.map(prop => prop.tipo))];
-const cidades = [...new Set(propriedades.map(prop => prop.cidade))];
-const bairros = [...new Set(propriedades.map(prop => prop.bairro))];
-const finalidade = [...new Set(propriedades.map(prop => prop.finalidade))];
-
-
-function preencherSelect(selectId, options) {
-    const select = document.getElementById(selectId);
-    options.forEach(option => {
-        const opt = document.createElement('option');
-        opt.value = option;
-        opt.textContent = option;
-        select.appendChild(opt);
-    });
+function getId() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('id');
 }
 
-preencherSelect('tipo', tipos);
-preencherSelect('cidade', cidades);
-preencherSelect('bairro', bairros);
-preencherSelect('finalidade', finalidade);
+function mostrarDetalhesPropriedade() {
+    const id = getId();
+    const propriedade = propriedades[id - 1];
 
-
-function mostrarPropriedades(propriedadesParaMostrar) {
-    const container = document.getElementById('containerPropriedades');
-    container.innerHTML = '';
-
-    if (propriedadesParaMostrar.length === 0) {
-        container.innerHTML = '<h1 class="not-found"> Nenhum imóvel encontrado.</h1>';
-        return;
-    }
-
-    propriedadesParaMostrar.forEach(propriedade => {
-        const elementoPropriedade = document.createElement('div');
-        elementoPropriedade.className = 'propriedade';
+    if (propriedade) {
+        document.getElementById('image').src = propriedade.img[0];
+        document.getElementById('property-title').textContent = `${propriedade.tipo} - ${propriedade.finalidade}`;
         if (propriedade.finalidade === "Aluguel") {
-            elementoPropriedade.innerHTML = `
-            <section>
-                <a href="detalhes.html?id=${propriedade.id}">
-                    <img class="image" src=${propriedade.img[0]} alt="Property Image" />
-                    <h1 class="poppins-semibold">${propriedade.tipo} - ${propriedade.finalidade}</h1>
-                    <p class="poppins-regular">${propriedade.cidade} - ${propriedade.bairro}</p>
-                    <h2 class="poppins-semibold">R$ ${propriedade.preço.toFixed(2)}/mês </h2>
-                </a>
-            </section>
-            `;
+            document.getElementById('property-preco').textContent = `R$ ${propriedade.preço.toFixed(2)}/mês`;
         } else {
-            elementoPropriedade.innerHTML = `
-            <section>
-                <a href="detalhes.html?id=${propriedade.id}">
-                    <img class="image" src=${propriedade.img[0]} />
-                    <h1 class="poppins-semibold">${propriedade.tipo} - ${propriedade.finalidade}</h1>
-                    <p class="poppins-regular">${propriedade.cidade} - ${propriedade.bairro}</p>
-                    <h2 class="poppins-semibold">R$ ${propriedade.preço.toFixed(2)}</h2>
-                </a>
-            </section>
-        `;
+            document.getElementById('property-preco').textContent = `R$ ${propriedade.preço.toFixed(2)}`;
         }
-        container.appendChild(elementoPropriedade);
-    });
+        document.getElementById('property-endereco').textContent = `${propriedade.rua}, ${propriedade.número}, ${propriedade.bairro}, ${propriedade.cidade}`;
+        document.getElementById('tamanho').textContent = `Área:${propriedade.area} m2`;
+
+        const infosDetalhes = document.getElementById('infos-detalhes');
+        infosDetalhes.innerHTML = '';
+
+
+        propriedade.infos.forEach(info => {
+            const label = document.createElement('label');
+            label.classList.add('background-box');
+            label.textContent = info;
+            infosDetalhes.appendChild(label);
+        });
+    } else {
+        document.getElementById('property-details').innerHTML = "<h1>Propriedade não encontrada.</h1>";
+    }
 }
 
-function filtrar() {
-    const tipo = document.getElementById('tipo').value;
-    const finalidade = document.getElementById('finalidade').value;
-    const cidade = document.getElementById('cidade').value;
-    const bairro = document.getElementById('bairro').value;
-    const min = document.getElementById('min').value || 0;
-    const max = document.getElementById('max').value || Infinity;
+document.addEventListener('DOMContentLoaded', mostrarDetalhesPropriedade);
 
-    const filtrado = propriedades.filter(propriedade => {
-        return (
-            (tipo === 'all' || propriedade.tipo === tipo) &&
-            (finalidade === 'all' || propriedade.finalidade === finalidade) &&
-            (cidade === 'all' || propriedade.cidade === cidade) &&
-            (bairro === 'all' || propriedade.bairro === bairro) &&
-            propriedade.preço >= min && propriedade.preço <= max
-        );
-    });
-    mostrarPropriedades(filtrado);
+
+function updateImg(i) {
+    const id = getId();
+    const img = document.getElementById('image');
+    const imagens = propriedades[id - 1].img[i];
+    console.log(imagens)
+    img.src = imagens;
+
+
 }
 
-function limpar() {
-    document.getElementById('tipo').value = 'all';
-    document.getElementById('finalidade').value = 'all';
-    document.getElementById('cidade').value = 'all';
-    document.getElementById('bairro').value = 'all';
-    document.getElementById('min').value = null;
-    document.getElementById('max').value = Infinity;
-
-    mostrarPropriedades(propriedades);
+function nextImg() {
+    const id = getId();
+    const imagens = propriedades[id - 1].img;
+    index++;
+    if (index >= imagens.length) {
+        index = 0;
+    }
+    updateImg(index);
 }
 
-document.getElementById('buscar-btn').addEventListener('click', filtrar);
-document.getElementById('limpar-btn').addEventListener('click', limpar);
+function prevImg() {
+    const id = getId();
+    const imagens = propriedades[id - 1].img;
+    index--;
+    if (index < 0) {
+        index = imagens.length - 1;
+    }
+    updateImg(index);
+}
 
-mostrarPropriedades(propriedades);
+updateImg(index)
+
+var modal = document.getElementById("myModal");
+
+var img = document.getElementById("image");
+var modalImg = document.getElementById("img01");
+img.onclick = function () {
+    modal.style.display = "block";
+    const id = getId();
+    const imagens = propriedades[id - 1].img[index];
+    modalImg.src = imagens;
+}
+function modalUpdate(i) {
+    const id = getId();
+    const imagens = propriedades[id - 1].img[i];
+    modalImg.src = imagens;
+}
+
+function modalNext() {
+    const id = getId();
+    const imagens = propriedades[id - 1].img;
+    index++;
+    if (index >= imagens.length) {
+        index = 0;
+    }
+    modalUpdate(index);
+}
+
+function modalPrev() {
+    const id = getId();
+    const imagens = propriedades[id - 1].img;
+    index--;
+    if (index < 0) {
+        index = imagens.length - 1;
+    }
+    modalUpdate(index);
+}
+modalUpdate(index)
+
+var span = document.getElementsByClassName("close")[0];
+
+span.onclick = function () {
+    modal.style.display = "none";
+}
