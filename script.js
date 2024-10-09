@@ -17,14 +17,10 @@ const propriedades = [
     { id: 14, img: ["/images/cobertura2.1.jpg", "/images/cobertura2.2.jpg"], tipo: 'Cobertura', finalidade: 'Venda', cidade: 'Curitiba', rua: 'Rua das Orquídeas', número: 555, bairro: 'Centro', preço: 850000.00, area: 280, infos: ['3 Quartos', '2 Vagas de Garagem', 'Jacuzzi', 'Churrasqueira'] },
 ];
 
-
-
-
 const tipos = [...new Set(propriedades.map(prop => prop.tipo))];
 const cidades = [...new Set(propriedades.map(prop => prop.cidade))];
 const bairros = [...new Set(propriedades.map(prop => prop.bairro))];
 const finalidade = [...new Set(propriedades.map(prop => prop.finalidade))];
-
 
 function preencherSelect(selectId, options) {
     const select = document.getElementById(selectId);
@@ -40,7 +36,6 @@ preencherSelect('tipo', tipos);
 preencherSelect('cidade', cidades);
 preencherSelect('bairro', bairros);
 preencherSelect('finalidade', finalidade);
-
 
 function mostrarPropriedades(propriedadesParaMostrar) {
     const container = document.getElementById('containerPropriedades');
@@ -116,3 +111,27 @@ document.getElementById('buscar-btn').addEventListener('click', filtrar);
 document.getElementById('limpar-btn').addEventListener('click', limpar);
 
 mostrarPropriedades(propriedades);
+
+function changeCss() {
+    var links = document.querySelectorAll("header a");
+    var header = document.querySelector("header");
+    var logo = document.getElementById("img-header")
+
+    if (window.scrollY === 0) {
+        links.forEach(link => {
+            link.style.color = '#ffffff';
+        });
+        header.className = 'teste1';
+        logo.src = "https://napa-residence.b-cdn.net/wp-content/uploads/2024/05/napa-brown-white.svg"
+
+    } else {
+        links.forEach(link => {
+            link.style.color = '#000000';
+        });
+        header.className = 'teste';
+        logo.src = "https://napa-residence.b-cdn.net/wp-content/uploads/2024/05/napa-dark-brown.svg"
+
+    }
+}
+window.addEventListener("load", changeCss);
+window.addEventListener("scroll", changeCss);

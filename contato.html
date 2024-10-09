@@ -6,40 +6,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <title>Contato - Imobiliaria XYZ</title>
 </head>
 
 <body>
     <header>
-        <h1>Imobiliaria XYZ</h1>
-        <div class="header-container">
-            <a class="button-header" href="index.html">Home</a>
+        <a class="h1" href="index.html" id="titulo-header"><img style="width: 25vh;" src="" alt="Logo"
+                id="img-header"></a>
+        <nav class="header-container">
+            <a id="header-element" class=" button-header" href="index.html">Comprar</a>
+            <a id="header-element" class="button-header" href="index.html">Alugar</a>
+            <a class="button-header" href="contato.html">Fale Conosco</a>
+            <a class="button-header" href="index.html">Crie um Alerta</a>
+            <a class="button-header" href="index.html">Favoritos</a>
             <a class="profile" href="perfil.html">
-                <i class="fa-solid fa-user"></i>
+                <i style="color: white;" class="fa-solid fa-user"></i>
             </a>
-        </div>
+        </nav>
     </header>
 
-    <main class="main">
-        <p class="title">Fale Conosco</p>
-        <section class="contact-info">
-            <a href="https://w.app/RUBnrh" class="button">Whatsapp</a>
-            <a href="mailto:maurocellas@gmail.com" class="button">Email</a>
-            <p class="box">Telefone: 46 99984-2342</p>
-        </section>
+    <main>
+        <div style=" background-color: black; max-height: 80vh; width: 100%;">
+            <img id="images-head" style="opacity: 0.6; object-fit:cover; width: 100%; height: 80vh;"
+                src="images/miami-2.jpeg" alt="miami">
+            <h1 style="font-size: 50px;
+            position: absolute;
+            color: white;
+                top: 35%;
+                left: 50%;
+                transform: translate(-50%, -50%);">Entre em contato</h1>
+            <h2 style="position: absolute;
+            color: white;
+                top: 43%;
+                left: 50%;
+                transform: translate(-50%, -50%);">Ligue ou envie um e-mail que iremos responder rapidamente</h2>
+        </div>
+        <div style="display: flex;">
+
+            <div style="height: 57vh; width: 150vh; padding-left: 30px; padding-top: 15px;" class="background-box-all">
+                <div>
+                    <h1 style="font-size: 35px;">Entre em contato conosco!</h1>
+                    <h2 style="font-size: 20px; margin-top: 20px"><i class="fa-solid fa-location-dot"></i>
+                        Rua Santo Antônio, 954, centro, São
+                        João - PR, 85570-000</h2>
+                    <div style="display: flex; flex-direction: row; align-items: center;">
+                        <div style="display: flex; flex-direction: column; margin-top: 20px;">
+                            <ol style="list-style-type: none;">
+                                <li><strong>Phone:</strong> 3533-1159</li>
+                                <li><strong>Mobile:</strong> (46) 99984-2342</li>
+                                <li><strong>Email:</strong> placeholder@gmail.com</li>
+
+                                </ul>
+                                <div
+                                    style="display: flex;justify-content: center;align-items: center; width: 180px; height: 50px; background-color: black; border-radius: 50px; margin-top: 15px;">
+                                    <a style="text-decoration: none; color: white;"
+                                        href="https://linktr.ee/maurocella">Entre em
+                                        contato!</a>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="padding-top: 15px; height: 57vh; width: 60vh;" class="background-box-all">
+                <h1 style="display: flex; justify-content: center; align-items: center; text-align: center;">Preencha
+                    nosso
+                    formulário!</h1>
+                <form>
+                    <fieldset
+                        style="padding: 5px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                        <div style="margin: 5px; display: flex; justify-content: center; align-items: center;">
+                            <input style="margin-right: 5px;border-color: rgb(207, 207, 207); border-radius: 10px;"
+                                type="text" placeholder="Nome" id="input-name" required>
+                            <input style="border-color: rgb(207, 207, 207); border-radius: 10px;" type="tel"
+                                placeholder="Telefone (apenas números)" id="input-phone" pattern="[0-9]{11}" required>
+                        </div>
+                        <input
+                            style="margin-bottom: 10px; width: 55vh; display: flex; justify-content: center; align-items: center; border-color: rgb(207, 207, 207); border-radius: 10px;"
+                            type="email" placeholder="E-mail" id="input-email" required>
+                        <textarea
+                            style="font-family: Arial, sans-serif;; padding: 5px; font-size: 16px;  resize: none; border-color: rgb(207, 207, 207); border-radius: 10px;"
+                            rows="6.5" cols="47" id="input-text" maxlength="256" required></textarea>
+                        <button
+                            style="width: 150px; height: 50px; background-color: black; border-radius: 50px; margin-top: 15px; font-size: 20px;"
+                            onclick="funcaoAlerta()" id="send-btn">
+                            Enviar</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
     </main>
 
-    <footer>
-        <span>Imobiliaria XYZ</span>
-        <div>
-            <i class="fa-solid fa-phone"></i>
-            <span>46 99984-2342</span>
-        </div>
-        <div>
-            <i class="fa-solid fa-phone"></i>
-            <span>46 99984-2342</span>
+    <footer style="display: flex; justify-content: space-between;">
+        <img style="width: 35vh; margin-left: 20px; display: flex; align-items: center; justify-content: center;"
+            src="https://napa-residence.b-cdn.net/wp-content/uploads/2024/05/napa-brown-white.svg" alt="Logo"
+            id="img-header">
+        <div style="margin-right: 20px;">
+            <div style="display: flex; flex-direction: row;">
+                <i class="fa-solid fa-phone"></i>
+                <span>46 99984-2342</span>
+            </div>
+            <div style="display: flex; flex-direction: row;">
+                <i class="fa-solid fa-phone"></i>
+                <span>46 99984-2342</span>
+            </div>
         </div>
     </footer>
+    <script src="contato.js"></script>
 </body>
 
 </html>
