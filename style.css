@@ -763,3 +763,29 @@ header h1,
         font-size: 12px;
     }
 }
+
+.cadastro-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.cadastro-form div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.cadastro-form fieldset {
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
