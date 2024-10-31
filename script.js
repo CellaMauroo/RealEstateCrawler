@@ -133,5 +133,7 @@ function changeCss() {
 
     }
 }
+
+
 window.addEventListener("load", changeCss);
 window.addEventListener("scroll", changeCss);

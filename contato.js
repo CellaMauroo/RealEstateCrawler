@@ -30,4 +30,3 @@ function funcaoAlerta() {
         alert("Enviado com sucesso!")
     }
 }
-
