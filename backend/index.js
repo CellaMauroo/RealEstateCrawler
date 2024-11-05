@@ -1,21 +1,18 @@
 require("dotenv").config();
+const fs = require("fs");
 const express = require("express");
 const db = require("./db");
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
+const path = require('path');
 const port = process.env.PORT;
 const app = express();
-
+const fileUpload = require('express-fileupload');
+const mv = require('mv');
 app.use(cors());
 app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: true }))
-
-app.get("/", (req, res) => {
-    res.json({
-        message: "funcionando"
-    })
-})
+app.use(fileUpload());
 
 app.get("/propriedades/:id", async (req, res) => {
     const propriedade = await db.selectProperty(req.params.id);
@@ -28,7 +25,6 @@ app.get("/propriedades", async (req, res) => {
 })
 
 app.post("/propriedades", async (req, res) => {
-    console.log(req.body)
     const tipo = req.body.tipo
     const finalidade = req.body.finalidade
     const preco = req.body.preco
@@ -37,8 +33,11 @@ app.post("/propriedades", async (req, res) => {
     const numero = req.body.numero
     const bairro = req.body.bairro
     const cidade = req.body.cidade
+    console.log(req.body)
 
-    //Validation - Tipo
+
+
+    // Validation - Tipo
 
     if (!tipo) {
         return res.status(400).send({
@@ -133,7 +132,7 @@ app.post("/propriedades", async (req, res) => {
             message: "The 'rua' field is required and cannot be null, undefined or empty."
         })
     }
-    if (rua.length < 3) {
+    if (rua.length <= 3) {
         return res.status(400).send({
             error: "Min_length_error",
             message: "The 'rua' field length must be higer than 3."
@@ -176,7 +175,7 @@ app.post("/propriedades", async (req, res) => {
             message: "The 'bairro' field is required and cannot be null, undefined or empty."
         })
     }
-    if (bairro.length > 100) {
+    if (bairro.length > 50) {
         return res.status(400).send({
             error: "Max_length_error",
             message: "The 'numero' field length must be lower than 100."
@@ -198,15 +197,28 @@ app.post("/propriedades", async (req, res) => {
         })
     }
 
-    if (cidade !== "Dois Vizinhos" && cidade !== "São João") { //Trocar validação para usar como base os tipos existentes no banco
-        return res.status(400).send({
-            error: "Invalid_data_error",
-            message: "The 'cidade' field must be 'Dois Vizinhos' or 'São João'" //Trocar mensagem quando alterar a validação 
-        })
+    try {
+        if (!req.files || !req.files.file) {
+            return res.status(400).send('Nenhum arquivo foi enviado.');
+        }
+
+        const file = req.files.file;
+        const fileName = req.body.fileName || file.name;
+        const filePath = path.join(__dirname, 'uploads', fileName);
+
+        await file.mv(filePath);
+
+        await db.insertProperties({
+            ...req.body,
+            foto: fileName
+        });
+
+        res.status(200).send('Propriedade cadastrada com sucesso!');
+    } catch (error) {
+        console.error('Erro no backend ao fazer upload do arquivo:', error);
+        return res.status(500).send('Erro ao fazer upload do arquivo.');
     }
 
-    await db.insertProperties(req.body);
-    return res.sendStatus(201);
 })
 
 app.patch("/propriedades/:id", async (req, res) => {

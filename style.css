@@ -807,17 +807,13 @@ header h1,
 
 .register-disabled {
     background-color: grey;
-    /* Cor de fundo para indicar desativação */
     color: lightgrey;
-    /* Cor do texto mais clara para contraste */
     width: 100px;
     height: 50px;
     border-radius: 50px;
     cursor: not-allowed;
-    /* Cursor que indica que a interação não é permitida */
     transition: background-color 0.3s ease;
     opacity: 0.6;
-    /* Reduz a opacidade para dar uma aparência de desativado */
 }
 
 .register:hover {
@@ -827,12 +823,22 @@ header h1,
 .input-register {
     margin: 5px;
     border-radius: 10px;
+    display: flex;
+    border: 1px solid #1f549a;
 }
 
 .input-register#tipo {
-    width: 120px;
+    width: 200px;
 }
 
 .input-register#finalidade {
-    width: 120px;
+    width: 200px;
+}
+
+.input-register#estado {
+    width: 40px;
+}
+
+.input-register#preco {
+    width: 410px;
 }

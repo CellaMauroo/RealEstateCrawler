@@ -35,15 +35,7 @@ async function selectProperty(id) {
 async function insertProperties(propriedade) {
     const property = await connect();
 
-    if (propriedade.tipo === null || propriedade.tipo === undefined) {
-        return JSON.parse({
-            status: 400,
-            error: "Bad Request",
-            message: "The 'tipo' field is required and cannot be null."
-        });
-    }
-
-    const sql = "INSERT INTO propriedade (tipo, finalidade, cidade, rua, numero, bairro, preco, area) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);"
+    const sql = "INSERT INTO propriedade (tipo, finalidade, cidade, rua, numero, bairro, preco, area, estado, cep, filename) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);"
     await property.query(sql, [
         propriedade.tipo,
         propriedade.finalidade,
@@ -52,8 +44,12 @@ async function insertProperties(propriedade) {
         propriedade.numero,
         propriedade.bairro,
         propriedade.preco,
-        propriedade.area
+        propriedade.area,
+        propriedade.estado,
+        propriedade.cep,
+        propriedade.fileName
     ]);
+
 };
 
 async function updateProperties(id, propriedade) {
