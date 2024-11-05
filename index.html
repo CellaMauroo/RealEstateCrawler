@@ -15,75 +15,105 @@
 </head>
 
 <body>
+
     <header>
-        <a style="color: white;" class="h1" href="index.html">Imobiliaria XYZ</a>
+        <a class="h1" href="index.html" id="titulo-header"><img style="width: 25vh;" src="" alt="logo"
+                id="img-header"></a>
         <nav class="header-container">
-            <a class="button-header" href="index.html">Comprar</a>
-            <a class="button-header" href="index.html">Alugar</a>
+            <a id="header-element" class=" button-header" href="cadastro.html">Cadastrar Imóvel</a>
+            <a id="header-element" class=" button-header" href="index.html">Comprar</a>
+            <a id="header-element" class="button-header" href="index.html">Alugar</a>
             <a class="button-header" href="contato.html">Fale Conosco</a>
             <a class="button-header" href="index.html">Crie um Alerta</a>
             <a class="button-header" href="index.html">Favoritos</a>
             <a class="profile" href="perfil.html">
-                <i class="fa-solid fa-user"></i>
+                <i style="color: white;" class="fa-solid fa-user"></i>
             </a>
         </nav>
     </header>
-    <main class="main">
-        <h1 class="poppins-semibold" id="mensagem">Encontre seu imóvel!</h1>
-        <form class="form">
-            <fieldset class="form-option">
-                <label for="tipo">Tipo do imóvel</label>
-                <select id="tipo">
-                    <option value="all">Todos</option>
-                </select>
-            </fieldset>
-            <fieldset class="form-option">
-                <label for="finalidade">Finalidade</label>
-                <select id="finalidade">
-                    <option value="all">Todos</option>
-                </select>
-            </fieldset>
-            <fieldset class="form-option">
-                <label for="cidade">Cidade</label>
-                <select id="cidade">
-                    <option value="all">Todos</option>
-                </select>
-            </fieldset>
-            <fieldset class="form-option">
-                <label for="bairro">Bairro</label>
-                <select id="bairro">
-                    <option value="all">Todos</option>
-                </select>
-            </fieldset>
-        </form>
-        <form class="price">
-            <fieldset class="price-btn">
-                <label>Min</label>
-                <input id="min" type="number" min="0" />
-            </fieldset>
-            <div class="line"> - </div>
-            <fieldset class="price-btn">
-                <label>Max</label>
-                <input id="max" type="number" min="0" />
-            </fieldset>
-        </form>
-        <div>
-            <button class="buscar-btn" id="buscar-btn">Buscar</button>
-            <button class="limpar-btn" id="limpar-btn">Limpar</button>
+    <main>
+        <div
+            style=" background-color: black; max-height: 85vh; width: 100%; border-bottom-left-radius: 20px;border-bottom-right-radius: 20px;">
+            <img id="images-head"
+                style="
+ opacity: 0.6; object-fit:cover; width: 100%; height: 85vh;border-bottom-left-radius: 20px;border-bottom-right-radius: 20px;"
+                src="images/bgimg2.jpg" alt="new york">
+            <h1 style="font-size: 50px;
+        position: absolute;
+        top: 27%;
+        left: 50%;
+            color: white;
+            transform: translate(-50%, -50%);" class="poppins-semibold" id="mensagem">Encontre seu imóvel!</h1>
+            <form style="position: absolute;
+            top: 37%;
+            left: 50%;
+            transform: translate(-50%, -50%);" class="form">
+                <fieldset class="form-option">
+                    <label style="color: white; display: flex; justify-content: center;" for="tipo">Tipo do
+                        imóvel</label>
+                    <select id="tipo">
+                        <option value="all">Todos</option>
+                    </select>
+                </fieldset>
+                <fieldset class="form-option">
+                    <label style="color: white; display: flex; justify-content: center;"
+                        for="finalidade">Finalidade</label>
+                    <select id="finalidade">
+                        <option value="all">Todos</option>
+                    </select>
+                </fieldset>
+                <fieldset class="form-option">
+                    <label style="color: white; display: flex; justify-content: center;" for="cidade">Cidade</label>
+                    <select id="cidade">
+                        <option value="all">Todos</option>
+                    </select>
+                </fieldset>
+                <fieldset class="form-option">
+                    <label style="color: white; display: flex; justify-content: center;" for="bairro">Bairro</label>
+                    <select id="bairro">
+                        <option value="all">Todos</option>
+                    </select>
+                </fieldset>
+            </form>
+            <form style="position: absolute;
+            top: 47%;
+            left: 50%;
+            transform: translate(-50%, -50%);" class="price">
+                <fieldset class="price-btn">
+                    <label style="color: white; display: flex; justify-content: center;">Min</label>
+                    <input id="min" type="number" min="0" />
+                </fieldset>
+                <div style="color: white;" class="line"> - </div>
+                <fieldset class="price-btn">
+                    <label style="color: white; display: flex; justify-content: center;">Max</label>
+                    <input id="max" type="number" min="0" />
+                </fieldset>
+            </form>
+            <div style="position: absolute;
+        top: 57%;
+        left: 50%;
+        transform: translate(-50%, -50%);">
+                <button class="buscar-btn" id="buscar-btn">Buscar</button>
+                <button class="limpar-btn" id="limpar-btn">Limpar</button>
+            </div>
         </div>
-
-        <div class="propriedade-container" id="containerPropriedades">
+        </div>
+        <div class="propriedade-container background-box-all" id="containerPropriedades">
         </div>
     </main>
-    <footer>
-        <span>Imobiliaria XYZ</span>
-        <div>
-            <i class="fa-solid fa-phone"></i>
-            <span>46 99984-2342</span>
-        </div>
-        <div>
-            <i class="fa-solid fa-phone"></i>
-            <span>46 99984-2342</span>
+    <footer style="display: flex; justify-content: space-between;">
+        <img style="width: 35vh; margin-left: 20px; display: flex; align-items: center; justify-content: center;"
+            src="https://napa-residence.b-cdn.net/wp-content/uploads/2024/05/napa-brown-white.svg" alt="Logo"
+            id="img-header">
+        <div style="margin-right: 20px;">
+            <div style="display: flex; flex-direction: row;">
+                <i class="fa-solid fa-phone"></i>
+                <span>46 99984-2342</span>
+            </div>
+            <div style="display: flex; flex-direction: row;">
+                <i class="fa-solid fa-phone"></i>
+                <span>46 99984-2342</span>
+            </div>
         </div>
     </footer>
     <script src="script.js"></script>

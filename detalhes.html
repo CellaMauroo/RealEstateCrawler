@@ -15,23 +15,34 @@
 </head>
 
 <body>
-    <header>
-        <a style="color: white;" class="h1" href="index.html">Imobiliaria XYZ</a>
+    <header class="teste">
+        <a class="h1" href="index.html" id="titulo-header"><img style="width: 25vh;"
+                src="https://napa-residence.b-cdn.net/wp-content/uploads/2024/05/napa-dark-brown.svg" alt="logo"
+                id="img-header"></a>
         <nav class="header-container">
-            <a class="button-header" href="index.html">Comprar</a>
-            <a class="button-header" href="index.html">Alugar</a>
+            <a id="header-element" class=" button-header" href="cadastro.html">Cadastrar Imóvel</a>
+            <a id="header-element" class=" button-header" href="index.html">Comprar</a>
+            <a id="header-element" class="button-header" href="index.html">Alugar</a>
             <a class="button-header" href="contato.html">Fale Conosco</a>
-            <a class="button-header" href="index.html">Crie um Alerta</a>
-            <a class="button-header" href="index.html">Favoritos</a>
+            <a class="button-header" href="">Crie um Alerta</a>
+            <a class="button-header" href="">Favoritos</a>
             <a class="profile" href="perfil.html">
-                <i class="fa-solid fa-user"></i>
+                <i style="color: white;" class="fa-solid fa-user"></i>
             </a>
         </nav>
     </header>
 
-    <main class="main-detalhes">
+    <main class="main-detalhes" style="margin-top: 90px;">
         <div id="property-details">
-            <h1 id="property-title" style="font-size: 40px;"></h1>
+            <div style=" display: flex; flex-direction: column; justify-content: start; align-items: start; margin-left:
+            50px;">
+                <h1 id="property-title" style="font-size: 40px;"></h1>
+                <h2 style="display: flex; flex-direction: row;">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <p id="location" style="margin-left: 10px;"></p>
+                </h2>
+
+            </div>
             <div class="carrossel">
                 <div class="image-container" id="image-prop">
                     <button onclick="prevImg()" class="carrossel-btn prev-btn fas fa-angle-left" id="prev-btn"></button>
@@ -49,19 +60,51 @@
                             <button onclick="modalNext()"
                                 style="color: #1f549a; background-color: transparent; font-size: 30px;"
                                 class=" fas fa-angle-right" id="modalNext"></button>
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="container-detalhes">
-            <a class="detalhes-btn" href="contato.html">Entre em contato</a>
-            <div class=" infos-detalhes">
-                <h2 id="property-preco"></h2>
-                <h2 id="tamanho"></h2>
+            <div
+                style="height: 71vh; width: 300px; padding-top: 30px; align-items: center; justify-content: space-between; display: flex; flex-direction: column;">
+                <div class=" infos-detalhes">
+                    <h2 id="property-preco"></h2>
+                    <h2 id="tamanho"></h2>
+                </div>
+                <a class="detalhes-btn" href="contato.html">Entre em contato</a>
             </div>
+            <div style="padding: 30px;">
+                <form style="width: 50vh;">
+                    <fieldset
+                        style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                        <h1 style="font-size: 30px;">Preencha nosso formulário</h1>
+                        <div style="padding: 5px; display: flex;">
+                            <input
+                                style="margin-right: 5px; width: 50%; border-color: rgb(207, 207, 207); border-radius: 10px;"
+                                type="text" placeholder="Nome" id="input-name" required>
+                            <input style="width: 50%; border-color: rgb(207, 207, 207); border-radius: 10px;" type="tel"
+                                placeholder="Telefone (apenas números)" id="input-phone" pattern="[0-9]{11}" required>
+                        </div>
+                        <div style="width: 100%; padding: 5px;">
+                            <input
+                                style="margin-bottom: 5px; width: 100%; border-color: rgb(207, 207, 207); border-radius: 10px;"
+                                type="email" placeholder="E-mail" id="input-email" required>
+                            <textarea
+                                style="color: rgb(61, 61, 61); padding: 10px; width: 100%; height: 30vh;;font-family: Arial, sans-serif;font-size: 16px;  resize: none; border-color: rgb(207, 207, 207); border-radius: 10px;"
+                                id="input-text" maxlength="256"
+                                required>Olá! Gostaria de mais informações sobre este imóvel.</textarea>
+                        </div>
+                        <button
+                            style="width: 150px; height: 50px; background-color: black; border-radius: 50px; margin-top: 15px; font-size: 20px;"
+                            onclick="funcaoAlerta()" id="send-btn">
+                            Enviar</button>
+                    </fieldset>
+                </form>
+            </div>
+
         </div>
+
         <div class="espec">
             <h1>Endereço</h1>
             <div class="linha-espec"></div>
@@ -70,14 +113,7 @@
 
             <h1>Detalhes do Imóvel</h1>
             <div class="linha-espec"></div>
-            <p class="texto-espec">
-                Lorem ipsum dolor sit amet. Et nobis nulla aut pariatur minima et aspernatur fuga sit illo
-                modi et culpa similique et vitae ipsum. Qui error saepe et neque eius ab rerum nesciunt quo
-                repellat error et laborum dolore ut ipsam galisum. Ad soluta velit 33 laudantium voluptatem
-                est voluptas dicta et officia sequi.Lorem ipsum dolor sit amet. Et nobis nulla aut pariatur minima et
-                aspernatur fuga sit illo
-
-            </p>
+            <p class="texto-espec" id="texto-espec"></p>
 
             <div class="opcionais-espec">
                 <h1>Informações adicionais</h1>
@@ -87,15 +123,19 @@
             </div>
     </main>
 
-    <footer>
-        <span>Imobiliaria XYZ</span>
-        <div>
-            <i class="fa-solid fa-phone"></i>
-            <span>46 99984-2342</span>
-        </div>
-        <div>
-            <i class="fa-solid fa-phone"></i>
-            <span>46 99984-2342</span>
+    <footer style="display: flex; justify-content: space-between;">
+        <img style="width: 35vh; margin-left: 20px; display: flex; align-items: center; justify-content: center;"
+            src="https://napa-residence.b-cdn.net/wp-content/uploads/2024/05/napa-brown-white.svg" alt="Logo"
+            id="img-header">
+        <div style="margin-right: 20px;">
+            <div style="display: flex; flex-direction: row;">
+                <i class="fa-solid fa-phone"></i>
+                <span>46 99984-2342</span>
+            </div>
+            <div style="display: flex; flex-direction: row;">
+                <i class="fa-solid fa-phone"></i>
+                <span>46 99984-2342</span>
+            </div>
         </div>
     </footer>
     <script src="detalhes.js"></script>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <title>Cadastro Imóveis</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="teste3">
+        <a class="h1" href="index.html" id="titulo-header"><img style="width: 25vh;"
+                src="https://napa-residence.b-cdn.net/wp-content/uploads/2024/05/napa-dark-brown.svg" alt="logo"
+                id="img-header"></a>
+        <nav class="header-container">
+            <a id="header-element" class=" button-header" href="index.html">Comprar</a>
+            <a id="header-element" class="button-header" href="index.html">Alugar</a>
+            <a class="button-header" href="">Fale Conosco</a>
+            <a class="button-header" href="">Crie um Alerta</a>
+            <a class="button-header" href="">Favoritos</a>
+            <a class="profile" href="perfil.html">
+                <i style="color: white;" class="fa-solid fa-user"></i>
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <form action="http://localhost:3000/propriedades" method="POST" class="cadastro-form" id="example-form">
+            <h1>Cadastro de Imóvel</h1>
+            <div style="padding: 10px;">
+                <select type="text" name="tipo" placeholder="Tipo" id="tipo" class="input-register" required>
+                    <option value="">Selecione</option>
+                    <option value="Casa">Casa</option>
+                    <option value="Apartamento">Apartamento</option>
+                </select>
+                <select type="text" name="finalidade" placeholder="Finalidade" id="finalidade" class="input-register"
+                    required>
+                    <option value="">Selecione</option>
+                    <option value="Aluguel">Aluguel</option>
+                    <option value="Venda">Venda</option>
+                </select>
+                <input type="number" name="preco" placeholder="Preço" id="preco" class="input-register " required>
+                <input type="number" name="area" placeholder="Área" id="area" class="input-register " required>
+            </div>
+            <h1>Endereço</h1>
+            <div style="display: flex; flex-direction: column;">
+                <fieldset style="display: flex; flex-direction: row;">
+                    <input type="text" name="rua" placeholder="Rua" id="rua" required class="input-register ">
+                    <input type="text" name="numero" placeholder="Número" id="numero" required class="input-register ">
+                </fieldset>
+                <fieldset style="display: flex; flex-direction: row;">
+                    <input type="text" name="cidade" placeholder="Cidade" id="cidade" required class="input-register ">
+                    <input type="text" name="bairro" placeholder="Bairro" id="bairro" required class="input-register ">
+                </fieldset>
+            </div>
+
+            <input type="submit" value="Cadastrar" class="register-disabled" id="submitBtn">
+        </form>
+    </main>
+    <script>
+        const form = document.getElementById("example-form");
+        const submitBtn = document.getElementById("submitBtn");
+
+        function updateSubmitBtn() {
+            const requiredFields = form.querySelectorAll("[required]");
+            let allFilled = true;
+
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    allFilled = false;
+                }
+            });
+
+            if (allFilled) {
+                submitBtn.className = 'register';
+            } else {
+                submitBtn.className = 'register-disabled';
+            }
+        }
+
+        form.addEventListener('input', updateSubmitBtn);
+
+        updateSubmitBtn();
+
+        async function postFormDataAsJson({ url, formData }) {
+            const plainFormData = Object.fromEntries(formData.entries());
+            const formDataJsonString = JSON.stringify(plainFormData);
+
+            const fetchOptions = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                body: formDataJsonString,
+            };
+
+            const response = await fetch(url, fetchOptions);
+
+            if (!response.ok) {
+                const errorMessage = await response.text();
+                throw new Error(errorMessage);
+            }
+
+            if (response.status !== 204 && response.headers.get('Content-Type').includes('application/json')) {
+                return response.json();
+            }
+
+            return null;
+
+
+        }
+
+        async function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const form = event.currentTarget;
+            const url = 'http://localhost:3000/propriedades';
+
+            try {
+                const formData = new FormData(form);
+                const responseData = await postFormDataAsJson({ url, formData });
+                console.log({ responseData });
+                console.log("cadastrdo com sucesso");
+                window.alert("Cadastrado com sucesso!");
+                window.location.reload();
+            } catch (error) {
+                window.alert("Falha ao cadastrars!");
+            }
+        }
+
+        const exampleForm = document.getElementById("example-form");
+        exampleForm.addEventListener("submit", handleFormSubmit);
+
+
+    </script>
+</body>
+
+</html>
