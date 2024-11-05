@@ -1,42 +1,5 @@
-
-
 const files = document.getElementById('files');
 const upload = document.getElementById('upload');
-const statuss = document.getElementById('status');
-
-upload.addEventListener('click', async () => {
-    statuss.innerHTML = 'Uploading...';
-
-    const file = files.files[0]; // Supondo que só um arquivo seja enviado por vez
-
-    if (!file) {
-        statuss.innerHTML = 'Nenhum arquivo selecionado!';
-        return;
-    }
-
-    const formData = new FormData();
-    const data = Date.now();
-    const nome = `${data}.${file.name}`
-    formData.append("file", file);
-    formData.append("fileName", nome);
-
-    try {
-        const response = await fetch('http://localhost:3000/propriedades', {
-            method: 'POST',
-            body: formData,
-        });
-
-        if (!response.ok) {
-            throw new Error(`Erro: ${response.status}`);
-        }
-
-        statuss.innerHTML = 'Arquivo enviado com sucesso!';
-    } catch (error) {
-        console.error('Erro ao enviar o arquivo:', error);
-        statuss.innerHTML = 'Falha ao fazer upload do arquivo.';
-    }
-});
-
 
 const input = document.getElementById('cep')
 
@@ -59,7 +22,6 @@ input.addEventListener('blur', function (event) {
 
 
 const form = document.getElementById("example-form");
-const submitBtn = document.getElementById("upload");
 
 function updateSubmitBtn() {
     const requiredFields = form.querySelectorAll("[required]");
@@ -72,9 +34,9 @@ function updateSubmitBtn() {
     });
 
     if (allFilled) {
-        submitBtn.className = 'register';
+        upload.className = 'register';
     } else {
-        submitBtn.className = 'register-disabled';
+        upload.className = 'register-disabled';
     }
 }
 
@@ -82,16 +44,12 @@ form.addEventListener('input', updateSubmitBtn);
 
 updateSubmitBtn();
 
-async function postFormDataAsJson({ url, formData }) {
-    const plainFormData = Object.fromEntries(formData.entries());
-    const formDataJsonString = JSON.stringify(plainFormData);
+
+
+async function postFormData({ url, formData }) {
     const fetchOptions = {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-        },
-        body: formDataJsonString,
+        body: formData,
     };
 
     const response = await fetch(url, fetchOptions);
@@ -106,8 +64,6 @@ async function postFormDataAsJson({ url, formData }) {
     }
 
     return null;
-
-
 }
 
 async function handleFormSubmit(event) {
@@ -118,17 +74,27 @@ async function handleFormSubmit(event) {
 
     try {
         const formData = new FormData(form);
-        const responseData = await postFormDataAsJson({ url, formData });
+        const fileInput = files;
+        const file = fileInput.files[0];
+
+        if (file) {
+            const data = Date.now();
+            const nomeArquivo = `${data}.${file.name}`;
+            formData.append("file", file);
+            formData.append("fileName", nomeArquivo);
+        }
+
+        const responseData = await postFormData({ url, formData });
         console.log({ responseData });
-        console.log("cadastrdo com sucesso");
+        console.log("Cadastrado com sucesso");
         window.alert("Cadastrado com sucesso!");
-        debugger
-        // window.location.reload();
+        window.location.reload();
     } catch (error) {
-        window.alert("Falha ao cadastrars!");
+        console.log("Erro ao cadastrar:", error);
+        window.alert("Falha ao cadastrar!");
     }
 }
 
-const exampleForm = document.getElementById("example-form");
-exampleForm.addEventListener("submit", handleFormSubmit);
+
+form.addEventListener("submit", handleFormSubmit);
 
