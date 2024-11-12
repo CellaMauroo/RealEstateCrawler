@@ -34,7 +34,7 @@ app.post("/propriedades", async (req, res) => {
     const bairro = req.body.bairro
     const cidade = req.body.cidade
     console.log(req.body)
-
+    // console.log(req.files.foto)
 
 
     // Validation - Tipo
@@ -198,26 +198,35 @@ app.post("/propriedades", async (req, res) => {
     }
 
     try {
-        if (!req.files || !req.files.file) {
+        if (!req.files || !req.files.foto) {
             return res.status(400).send('Nenhum arquivo foi enviado.');
         }
 
-        const file = req.files.file;
-        const fileName = req.body.fileName || file.name;
-        const filePath = path.join(__dirname, 'uploads', fileName);
+        const total = Array.isArray(req.files.foto) ? req.files.foto.length : 1;
+        const fotos = [];
 
-        await file.mv(filePath);
+        for (let i = 0; i < total; i++) {
+            const file = Array.isArray(req.files.foto) ? req.files.foto[i] : req.files.foto;
 
-        await db.insertProperties({
-            ...req.body,
-            foto: fileName
+            const data = Date.now();
+            const nomeArquivo = `${data}-${file.name}`;
+            const filePath = path.join(__dirname, 'uploads', nomeArquivo);
+
+            await file.mv(filePath);
+
+            fotos.push({ nomeArquivo });
+        }
+
+        await db.insertProperties({ ...req.body }, fotos);
+
+        res.status(200).json({
+            message: "Propriedade e foto cadastradas com sucesso",
         });
-
-        res.status(200).send('Propriedade cadastrada com sucesso!');
     } catch (error) {
-        console.error('Erro no backend ao fazer upload do arquivo:', error);
-        return res.status(500).send('Erro ao fazer upload do arquivo.');
+        console.error('Erro ao fazer upload do arquivo:', error);
+        res.status(500).send('Erro ao fazer upload dos arquivos.');
     }
+
 
 })
 

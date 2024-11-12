@@ -32,58 +32,64 @@
     </header>
 
     <main>
-        <form action="http://localhost:3000/propriedades" method="POST" class="cadastro-form" id="example-form"
-            enctype="multipart/form-data">
-            <h1>Cadastro de Imóvel</h1>
-            <div style="display: flex; flex-direction: column;">
-                <fieldset>
-                    <input min="1" max="10000000000" type="number" name="preco" placeholder="Preço" id="preco"
-                        class="input-register " required>
-                </fieldset>
-                <div>
-                    <select type="text" name="tipo" placeholder="Tipo" id="tipo" class="input-register" required>
-                        <option value="">Selecione o tipo</option>
-                        <option value="Casa">Casa</option>
-                        <option value="Apartamento">Apartamento</option>
-                    </select>
-                    <select type="text" name="finalidade" placeholder="Finalidade" id="finalidade"
-                        class="input-register" required>
-                        <option value="">Selecione a finalidade</option>
-                        <option value="Aluguel">Aluguel</option>
-                        <option value="Venda">Venda</option>
-                    </select>
+        <div style="display: flex; justify-content: center; align-items: center;">
+
+            <form action="http://localhost:3000/propriedades" method="POST" class="form-container" id="example-form"
+                enctype="multipart/form-data">
+                <h1 class="form-title">Cadastro de Imóvel</h1>
+                <div class="form-group">
+                    <fieldset class="fieldset" style="padding-block: 10px;">
+                        <input min="1" max="10000000000" type="number" name="preco" placeholder="Preço" id="preco"
+                            class="form-input" required>
+                    </fieldset>
+                    <div class="form-row">
+                        <select type="text" name="tipo" placeholder="Tipo" id="tipo" class="form-select" required>
+                            <option value="">Selecione o tipo</option>
+                            <option value="Casa">Casa</option>
+                            <option value="Apartamento">Apartamento</option>
+                        </select>
+                        <select type="text" name="finalidade" placeholder="Finalidade" id="finalidade"
+                            class="form-select" required>
+                            <option value="">Selecione a finalidade</option>
+                            <option value="Aluguel">Aluguel</option>
+                            <option value="Venda">Venda</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <h1>Endereço</h1>
 
-            <div style="display: flex; flex-direction: column;">
-                <input type="text" name="cep" placeholder="Cep" id="cep" required class="input-register ">
-                <fieldset style="display: flex; flex-direction: row;">
-                    <input minlength="3" maxlength="100" type="text" name="rua" placeholder="Rua" id="rua" required
-                        class="input-register ">
-                    <input minlength="1" maxlength="10" type="text" name="numero" placeholder="Número" id="numero"
-                        required class="input-register ">
-                </fieldset>
-                <fieldset style="display: flex; flex-direction: row;">
-                    <input type="text" name="cidade" placeholder="Cidade" id="cidade" required class="input-register ">
-                    <input type="text" name="estado" placeholder="UF" id="estado" required class="input-register">
-                    <input minlength="1" maxlength="50" type="text" name="bairro" placeholder="Bairro" id="bairro"
-                        required class="input-register ">
-                </fieldset>
-                <h1>Tamanho</h1>
-                <input min="1" max="10000" type="number" name="area" placeholder="Área" id="area"
-                    class="input-register " required>
-                <h1>Imagens</h1>
-                <input name="foto" type="file" id="files" multiple required>
-            </div>
+                <h1 class="form-title">Endereço</h1>
+                <div class="form-group">
+                    <input type="text" name="cep" placeholder="Cep" id="cep" required class="form-input">
+                    <fieldset class="fieldset">
+                        <input minlength="3" maxlength="100" type="text" name="rua" placeholder="Rua" id="rua" required
+                            class="form-input">
+                        <input minlength="1" maxlength="10" type="text" name="numero" placeholder="Número" id="numero"
+                            required class="form-input">
+                    </fieldset>
+                    <fieldset class="fieldset">
+                        <input type="text" name="cidade" placeholder="Cidade" id="cidade" required class="form-input">
+                        <input type="text" name="estado" placeholder="UF" id="estado" required class="form-input">
+                        <input minlength="1" maxlength="50" type="text" name="bairro" placeholder="Bairro" id="bairro"
+                            required class="form-input">
+                    </fieldset>
+                    <h1 class="form-title">Tamanho</h1>
+                    <input min="1" max="10000" type="number" name="area" placeholder="Área" id="area" class="form-input"
+                        required>
+                    <h1 class="form-title">Imagens</h1>
+                    <label class="upload">Upload de Arquivos
+                        <input name="foto" type="file" id="files" multiple class="form-file-input" required>
 
+                    </label>
+                    <div class="file-name" id="file-name"></div>
 
-            <input type="submit" value="Cadastrar" class="register-disabled" id="upload">
+                </div>
+                <input type="submit" value="Cadastrar" class="form-button" id="upload">
+            </form>
 
-        </form>
-        <small id="status"></small>
+            <small id="status"></small>
+        </div>
     </main>
     <script src="cadastro.js"></script>
 </body>
 
-</html>r
+</html>
