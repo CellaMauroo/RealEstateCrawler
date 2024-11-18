@@ -1,3 +1,12 @@
+const inputs = document.getElementById("files")
+inputs.addEventListener('change', function (inputs) {
+    const fileName = inputs.files[0].name || 'Nenhum arquivo selecionado';
+    console.log(fileName)
+    document.getElementById('file-name').textContent = fileName;
+})
+
+
+
 const files = document.getElementById('files');
 const upload = document.getElementById('upload');
 
@@ -74,19 +83,7 @@ async function handleFormSubmit(event) {
 
     try {
         const formData = new FormData(form);
-        const fileInput = files;
-        const file = fileInput.files[0];
-
-        if (file) {
-            const data = Date.now();
-            const nomeArquivo = `${data}.${file.name}`;
-            formData.append("file", file);
-            formData.append("fileName", nomeArquivo);
-        }
-
-        const responseData = await postFormData({ url, formData });
-        console.log({ responseData });
-        console.log("Cadastrado com sucesso");
+        await postFormData({ url, formData });
         window.alert("Cadastrado com sucesso!");
         window.location.reload();
     } catch (error) {

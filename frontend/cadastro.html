@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <title>Cadastro Imóveis</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/imask"></script>
+</head>
+
+<body>
+    <header class="teste3">
+        <a class="h1" href="index.html" id="titulo-header"><img style="width: 25vh;"
+                src="https://napa-residence.b-cdn.net/wp-content/uploads/2024/05/napa-dark-brown.svg" alt="logo"
+                id="img-header"></a>
+        <nav class="header-container">
+            <a id="header-element" class=" button-header" href="index.html">Comprar</a>
+            <a id="header-element" class="button-header" href="index.html">Alugar</a>
+            <a class="button-header" href="">Fale Conosco</a>
+            <a class="button-header" href="">Crie um Alerta</a>
+            <a class="button-header" href="">Favoritos</a>
+            <a class="profile" href="perfil.html">
+                <i style="color: white;" class="fa-solid fa-user"></i>
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <div style="display: flex; justify-content: center; align-items: center;">
+
+            <form action="http://localhost:3000/propriedades" method="POST" class="form-container" id="example-form"
+                enctype="multipart/form-data">
+                <h1 class="form-title">Cadastro de Imóvel</h1>
+                <div class="form-group">
+                    <fieldset class="fieldset" style="padding-block: 10px;">
+                        <input min="1" max="10000000000" type="number" name="preco" placeholder="Preço" id="preco"
+                            class="form-input" required>
+                    </fieldset>
+                    <div class="form-row">
+                        <select type="text" name="tipo" placeholder="Tipo" id="tipo" class="form-select" required>
+                            <option value="">Selecione o tipo</option>
+                            <option value="Casa">Casa</option>
+                            <option value="Apartamento">Apartamento</option>
+                        </select>
+                        <select type="text" name="finalidade" placeholder="Finalidade" id="finalidade"
+                            class="form-select" required>
+                            <option value="">Selecione a finalidade</option>
+                            <option value="Aluguel">Aluguel</option>
+                            <option value="Venda">Venda</option>
+                        </select>
+                    </div>
+                </div>
+
+                <h1 class="form-title">Endereço</h1>
+                <div class="form-group">
+                    <input type="text" name="cep" placeholder="Cep" id="cep" required class="form-input">
+                    <fieldset class="fieldset">
+                        <input minlength="3" maxlength="100" type="text" name="rua" placeholder="Rua" id="rua" required
+                            class="form-input">
+                        <input minlength="1" maxlength="10" type="text" name="numero" placeholder="Número" id="numero"
+                            required class="form-input">
+                    </fieldset>
+                    <fieldset class="fieldset">
+                        <input type="text" name="cidade" placeholder="Cidade" id="cidade" required class="form-input">
+                        <input type="text" name="estado" placeholder="UF" id="estado" required class="form-input">
+                        <input minlength="1" maxlength="50" type="text" name="bairro" placeholder="Bairro" id="bairro"
+                            required class="form-input">
+                    </fieldset>
+                    <h1 class="form-title">Tamanho</h1>
+                    <input min="1" max="10000" type="number" name="area" placeholder="Área" id="area" class="form-input"
+                        required>
+                    <h1 class="form-title">Imagens</h1>
+                    <label class="upload">Upload de Arquivos
+                        <input name="foto" type="file" id="files" multiple class="form-file-input" required>
+
+                    </label>
+                    <div class="file-name" id="file-name"></div>
+
+                </div>
+                <input type="submit" value="Cadastrar" class="form-button" id="upload">
+            </form>
+
+            <small id="status"></small>
+        </div>
+    </main>
+    <script src="cadastro.js"></script>
+</body>
+
+</html>
