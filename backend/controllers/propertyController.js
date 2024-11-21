@@ -4,6 +4,8 @@ const mv = require('mv');
 const fileUpload = require('express-fileupload');
 const fs = require("fs");
 
+
+
 async function getPropriedades(req, res) {
     try {
         const propriedades = await propertyModel.selectProperties();
@@ -49,5 +51,5 @@ async function addPropriedades(req, res) {
 
 module.exports = {
     getPropriedades,
-    addPropriedades
+    addPropriedades,
 };

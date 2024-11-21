@@ -1,8 +1,23 @@
 const db = require('../db')
 
+
 async function selectProperties() {
     const property = await db.connect();
-    const res = await property.query("SELECT * FROM propriedades");
+    const res = await property.query(`SELECT 
+    p.*,
+    f.id AS foto_id,
+    f.nome_arquivo,
+    f.data_criacao AS foto_data_criacao
+FROM 
+    propriedades p
+LEFT JOIN (
+    SELECT DISTINCT ON (propriedade_id) *
+    FROM fotos
+    ORDER BY propriedade_id, data_criacao ASC
+) f
+ON 
+    p.id = f.propriedade_id;
+`);
     return res.rows;
 };
 
@@ -97,5 +112,5 @@ module.exports = {
     selectProperty,
     insertProperties,
     updateProperties,
-    deleteProperty
+    deleteProperty,
 }
