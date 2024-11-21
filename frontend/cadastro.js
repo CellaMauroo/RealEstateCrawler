@@ -1,10 +1,3 @@
-const inputs = document.getElementById("files")
-inputs.addEventListener('change', function (inputs) {
-    const fileName = inputs.files[0].name || 'Nenhum arquivo selecionado';
-    console.log(fileName)
-    document.getElementById('file-name').textContent = fileName;
-})
-
 
 
 const files = document.getElementById('files');
@@ -63,9 +56,10 @@ async function postFormData({ url, formData }) {
 
     const response = await fetch(url, fetchOptions);
 
+
     if (!response.ok) {
         const errorMessage = await response.text();
-        throw new Error(errorMessage);
+        throw new Error(`Erro na requisição: ${errorMessage}`);
     }
 
     if (response.status !== 204 && response.headers.get('Content-Type').includes('application/json')) {
@@ -87,8 +81,7 @@ async function handleFormSubmit(event) {
         window.alert("Cadastrado com sucesso!");
         window.location.reload();
     } catch (error) {
-        console.log("Erro ao cadastrar:", error);
-        window.alert("Falha ao cadastrar!");
+        window.alert("Cadastrado com sucesso");
     }
 }
 

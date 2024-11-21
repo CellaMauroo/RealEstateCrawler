@@ -1,4 +1,3 @@
-// db.js
 
 async function connect() {
     if (global.connection) {
