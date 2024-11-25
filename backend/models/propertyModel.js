@@ -23,9 +23,28 @@ ON
 
 async function selectProperty(id) {
     const property = await db.connect();
-    const res = await property.query("SELECT * FROM propriedades WHERE ID=$1", [id]);
+    const res = await property.query(`
+    SELECT 
+	p.id, 
+	p.tipo,
+	p.finalidade,
+	p.cidade,
+	p.rua,
+	p.numero,
+	p.bairro,
+	p.preco,
+	p.area,
+	p.cep,
+	p.estado,
+	f.nome_arquivo
+FROM propriedades AS p
+LEFT JOIN fotos AS f
+ON p.id = f.propriedade_id
+WHERE p.id = $1`, [id]);
+    console.log(res.rows)
     return res.rows;
 };
+
 
 async function insertDocs(propriedadeId, fotos) {
     const client = await db.connect();

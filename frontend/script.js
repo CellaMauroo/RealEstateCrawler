@@ -61,19 +61,24 @@ function mostrarPropriedades(propriedadesParaMostrar) {
         if (propriedade.finalidade === "Aluguel") {
             elementoPropriedade.innerHTML = `
                 <section>
+                    <a href="detalhes.html?id=${propriedade.id}">
                         <img class="image" src="../backend/uploads/${propriedade.nome_arquivo}" alt="Property Image" />
                         <h1 class="poppins-semibold">${propriedade.tipo} - ${propriedade.finalidade}</h1>
                         <p class="poppins-regular">${propriedade.cidade} - ${propriedade.bairro}</p>
                         <h2 class="poppins-semibold">R$ ${propriedade.preco}/mês </h2>
+                    </a>
                 </section>
                 `;
         } else {
             elementoPropriedade.innerHTML = `
             <section>
+                <a href="detalhes.html?id=${propriedade.id}">
                     <img class="image" src="../backend/uploads/${propriedade.nome_arquivo}" alt="Property Image" />
                     <h1 class="poppins-semibold">${propriedade.tipo} - ${propriedade.finalidade}</h1>
                     <p class="poppins-regular">${propriedade.cidade} - ${propriedade.bairro}</p>
                     <h2 class="poppins-semibold">R$ ${propriedade.preco} </h2>
+                </a>
+
             </section>
             `;
         }
@@ -147,4 +152,4 @@ function changeCss() {
 
 window.addEventListener("load", changeCss);
 window.addEventListener("scroll", changeCss);
-window.addEventListener("DOMContentLoaded", Buscar)
+Buscar()
