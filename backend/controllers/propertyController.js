@@ -5,6 +5,19 @@ const fileUpload = require('express-fileupload');
 const fs = require("fs");
 
 
+async function getPropriedadesById(req, res) {
+    const id = req.params.id
+    const queryResult = await propertyModel.selectProperty(id)
+    const response = {
+        ...queryResult[0],
+        images: []
+    }
+    delete response.nome_arquivo
+    for (const x of queryResult) {
+        response.images.push(x.nome_arquivo)
+    }
+    res.json(response);
+}
 
 async function getPropriedades(req, res) {
     try {
@@ -52,4 +65,5 @@ async function addPropriedades(req, res) {
 module.exports = {
     getPropriedades,
     addPropriedades,
+    getPropriedadesById
 };
