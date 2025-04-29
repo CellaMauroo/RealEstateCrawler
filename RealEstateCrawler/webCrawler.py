@@ -60,20 +60,6 @@ def processar_sites(urls, arquivo_json):
 
 
 urls = [
-    "https://www.silvacorretoradeimoveis.com.br/filtro/venda/todos/todos/todas/todos/todos/todos/1/1",
-    "https://www.silvacorretoradeimoveis.com.br/filtro/venda/todos/todos/todas/todos/todos/todos/1/2",
-    "https://www.silvacorretoradeimoveis.com.br/filtro/venda/todos/todos/todas/todos/todos/todos/1/3",
-    "https://www.silvacorretoradeimoveis.com.br/filtro/venda/todos/todos/todas/todos/todos/todos/1/4",
-    "https://www.silvacorretoradeimoveis.com.br/filtro/venda/todos/todos/todas/todos/todos/todos/1/5",
-    "https://www.silvacorretoradeimoveis.com.br/filtro/venda/todos/todos/todas/todos/todos/todos/1/6",
-    "https://www.silvacorretoradeimoveis.com.br/filtro/venda/todos/todos/todas/todos/todos/todos/1/7",
-    "https://www.silvacorretoradeimoveis.com.br/filtro/venda/todos/todos/todas/todos/todos/todos/1/8",
-    "https://www.silvacorretoradeimoveis.com.br/filtro/venda/todos/todos/todas/todos/todos/todos/1/9",
-    "https://www.silvacorretoradeimoveis.com.br/filtro/venda/todos/todos/todas/todos/todos/todos/1/10",
-    "https://www.silvacorretoradeimoveis.com.br/filtro/locacao/todos/todos/todas/todos/todos/todos/1/1",
-    "https://www.silvacorretoradeimoveis.com.br/filtro/locacao/todos/todos/todas/todos/todos/todos/1/2",
-    "https://www.silvacorretoradeimoveis.com.br/filtro/locacao/todos/todos/todas/todos/todos/todos/1/3",
-
 ]
 
 arquivo_json = 'imoveis_extraidos.json'
